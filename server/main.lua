@@ -66,22 +66,14 @@ QBCore.Commands.Add("createhouse", Lang:t("info.create_house"), {{name = "price"
     local Player = QBCore.Functions.GetPlayer(src)
     local price = tonumber(args[1])
     local tier = tonumber(args[2])
-    if Player.PlayerData.job.name == "realestate" then
-        TriggerClientEvent("qb-houses:client:createHouses", src, price, tier)
-    else
-        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.realestate_only"), "error")
-    end
-end)
+    TriggerClientEvent("qb-houses:client:createHouses", src, price, tier)
+end, "god")
 
 QBCore.Commands.Add("addgarage", Lang:t('info.add_garage'), {}, false, function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == "realestate" then
-        TriggerClientEvent("qb-houses:client:addGarage", src)
-    else
-        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.realestate_only"), "error")
-    end
-end)
+    TriggerClientEvent("qb-houses:client:addGarage", src)
+end, "god")
 
 QBCore.Commands.Add("ring", Lang:t("info.ring_doorbell"), {}, false, function(source)
     local src = source
@@ -92,7 +84,7 @@ end)
 
 QBCore.Functions.CreateUseableItem("police_stormram", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
-    if (Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty) then
+    if (Player.PlayerData.job.isleo and Player.PlayerData.job.onduty) then
         TriggerClientEvent("qb-houses:client:HomeInvasion", source)
     else
         TriggerClientEvent('QBCore:Notify', source, Lang:t("error.emergency_services"), "error")
