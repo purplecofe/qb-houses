@@ -165,9 +165,9 @@ local function RegisterStashTarget()
 
     stashTargetBox:onPlayerInOut(function (isPointInside)
         if isPointInside and not entering and isOwned then
-            exports['qb-core']:DrawText(Lang:t("target.open_stash"), 'left')
+            exports['ps-ui']:DisplayText(Lang:t("target.open_stash"), 'primary')
         else
-            exports['qb-core']:HideText()
+            exports['ps-ui']:HideText()
         end
 
         isInsideStashTarget = isPointInside
@@ -189,9 +189,9 @@ local function RegisterOutfitsTarget()
 
     outfitsTargetBox:onPlayerInOut(function (isPointInside)
         if isPointInside and not entering and isOwned then
-            exports['qb-core']:DrawText(Lang:t("target.outfits"), 'left')
+            exports['ps-ui']:DisplayText(Lang:t("target.outfits"), 'primary')
         else
-            exports['qb-core']:HideText()
+            exports['ps-ui']:HideText()
         end
 
         isInsideOutfitsTarget = isPointInside
@@ -213,9 +213,9 @@ local function RegisterCharactersTarget()
 
     charactersTargetBox:onPlayerInOut(function (isPointInside)
         if isPointInside and not entering and isOwned then
-            exports['qb-core']:DrawText(Lang:t("target.change_character"), 'left')
+            exports['ps-ui']:DisplayText(Lang:t("target.change_character"), 'primary')
         else
-            exports['qb-core']:HideText()
+            exports['ps-ui']:HideText()
         end
 
         isInsiteCharactersTarget = isPointInside
@@ -1521,7 +1521,7 @@ CreateThread(function ()
                 wait = 0
                 if IsControlJustPressed(0, 38) then
                     TriggerEvent('qb-houses:client:OpenStash')
-                    exports['qb-core']:HideText()
+                    exports['ps-ui']:HideText()
                 end
             end
 
@@ -1529,7 +1529,7 @@ CreateThread(function ()
                 wait = 0
                 if IsControlJustPressed(0, 38) then
                     TriggerEvent('qb-houses:client:ChangeOutfit')
-                    exports['qb-core']:HideText()
+                    exports['ps-ui']:HideText()
                 end
             end
 
@@ -1537,7 +1537,7 @@ CreateThread(function ()
                 wait = 0
                 if IsControlJustPressed(0, 38) then
                     TriggerEvent('qb-houses:client:ChangeCharacter')
-                    exports['qb-core']:HideText()
+                    exports['ps-ui']:HideText()
                 end
             end
         end
